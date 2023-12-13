@@ -2,8 +2,6 @@ package org.example.scrapers;
 
 import org.example.DatabaseUtility;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 import java.util.Scanner;
@@ -38,7 +36,15 @@ public class NikeScript {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Executes the scraping process for Nike's website.
+     * This method navigates to the Nike website for men's football shoes, extracts product information
+     * such as title, URL, price, and image URL, and stores this information in the database.
+     *
+     * @param dbUtil The database utility used for data storage.
+     * @param driver The WebDriver instance used for web scraping.
+     * @param js The JavascriptExecutor instance used for executing JavaScript on the web page.
+     */
     public static void runScraper(DatabaseUtility dbUtil, WebDriver driver, JavascriptExecutor js){
         try {
             // Navigate to the website

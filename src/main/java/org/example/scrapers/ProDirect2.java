@@ -1,12 +1,22 @@
 package org.example.scrapers;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.util.List;
-
+/**
+ * The ProDirect2 class is responsible for scraping the sku from the product page
+ * It utilizes Selenium WebDriver for web navigation and data extraction, and integrates with
+ * the DatabaseUtility class for data persistence.
+ */
 public class ProDirect2 {
+    /**
+     * Gets the sku for a product from the ProDirect website.
+     * This method navigates to the product page and extracts the sku from the page.
+     * It returns the sku as a String.
+     *
+     * @param driver The WebDriver instance for navigating and extracting data from the web.
+     * @param productUrl The URL of the product page.
+     * @param js The JavascriptExecutor for executing JavaScript commands during scraping.
+     * @return sku_full The sku of the product.
+     */
     public static String getSKUForProduct(WebDriver driver, String productUrl,JavascriptExecutor js) {
         String sku_full="";
         try {

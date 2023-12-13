@@ -1,46 +1,68 @@
 package org.example;
 /**
- * This is the main application class that runs all the scrapers
- * and inserts the data into the database
+ * Main application class that runs all the scrapers and inserts the data into the database.
+ *
+ * <p>Uses the following scrapers:
+ * <ol>
+ * <li>FootStore</li>
+ * <li>Nike</li>
+ * <li>Ultra Football</li>
+ * <li>ProDirect</li>
+ * <li>UniSportStore</li>
+ * </ol>
+ *
+ * @author Maaz Chowdhry
+ * @date 2023-12-13
+ * @version 1.0
  */
-/** Importing the scrapers */
+
+// Importing the scrapers
 import org.example.scrapers.*;
-/** Importing the JavascriptExecutor and WebDriver classes */
+// Importing the JavascriptExecutor and WebDriver classes
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-/** Importing the ChromeDriver and ChromeOptions classes */
+// Importing the ChromeDriver and ChromeOptions classes
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-/** Importing the concurrent package for multithreading */
+// Importing the concurrent package for multithreading
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainApplication {
     /**
      * This method runs all the scrapers in parallel using multithreading
-     * @param args
+     * @param args - command line arguments
      */
     public static void main(String[] args) {
-        /**
+        /*
          * Creating a fixed thread pool of size 5
          * Each scraper is submitted to the executor service
          * and is run in parallel
          */
-        /** Creating a fixed thread pool */
+        // Creating a fixed thread pool of size 5
         ExecutorService executorService = Executors.newFixedThreadPool(5);
 
-        /** Submitting each scraper task to the executor service */
+        // Submitting each scraper task to the executor service
         executorService.submit(() -> runScraper(1));
         executorService.submit(() -> runScraper(2));
         executorService.submit(() -> runScraper(3));
         executorService.submit(() -> runScraper(4));
         executorService.submit(() -> runScraper(5));
 
-        /** Shutdown the executor service */
+        // Shutdown the executor service once all the tasks are completed
         executorService.shutdown();
     }
+    /**
+     * This method runs the scraper based on the scraper choice
+     * @param scraperChoice
+     * 1 - FootStore
+     * 2 - Nike
+     * 3 - Ultra Football
+     * 4 - ProDirect
+     * 5 - UniSportStore
+     */
     public static void runScraper(int scraperChoice){
-        /** Setting the path of the ChromeDriver */
+        // Setting the path of the ChromeDriver
         System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
         System.setProperty("webdriver.chrome.whitelistedIps", "");
         // Create an instance of ChromeOptions
@@ -78,7 +100,7 @@ public class MainApplication {
                 //Invalid scraper choice
                 System.out.println("Invalid scraper choice");
         }
-        // Close Hibernate session
+        // Close Hibernate session factory
         dbUtil.closeSessionFactory();
 
         // Quit WebDriver

@@ -2,13 +2,27 @@ package org.example.scrapers;
 
 import org.example.ProductInfo;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * The UniSportStore1 class is responsible for scraping product data from the UniSportStore website.
+ * It utilizes Selenium WebDriver for web navigation and data extraction.
+ * It saves the product data in a List of ProductInfo objects and returns it.
+ */
 public class unisportstore1 {
+    /**
+     * Runs the scraper for the UniSportStore website.
+     * This method orchestrates the process of scraping product data from UniSportStore,
+     * and stores them in a List of ProductInfo objects.
+     * It calls the acceptCookiesIfPresent method to accept the cookies on the website.
+     * It then iterates through the products and extracts the title, URL, price, and image URL.
+     * It saves the product data in a List of ProductInfo objects and returns it.
+     *
+     * @param driver The WebDriver instance for navigating and extracting data from the web.
+     * @param js The JavascriptExecutor for executing JavaScript commands during scraping.
+     * @return products The List of ProductInfo objects containing the scraped data.
+     */
     public static List<ProductInfo> runScraper(WebDriver driver, JavascriptExecutor js) {
         List<ProductInfo> products = new ArrayList<>();
         try {
@@ -64,6 +78,15 @@ public class unisportstore1 {
         return products;
     }
 
+    /**
+     * Clicks the 'Next' button on the UniSportStore website if it is present and clickable.
+     * This method finds the 'Next' button using its aria-label attribute.
+     * It then checks if the button is enabled and not obscured by other elements.
+     * If the button is enabled and not obscured by other elements, it clicks the button.
+     * If the button is not clickable it returns false.
+     * @param driver
+     * @return
+     */
     private static boolean clickNextButton(WebDriver driver) {
         try {
             WebElement nextButton = driver.findElement(By.cssSelector("a[aria-label='Next Page']"));
@@ -80,7 +103,14 @@ public class unisportstore1 {
         }
         return false;
     }
-
+    /**
+     * Accepts the cookies on the UniSportStore website if the cookie consent banner is present.
+     * This method finds the "Accept all" button using its class and aria-label attributes.
+     * It then checks if the button is displayed and enabled.
+     * If the button is displayed and enabled, it clicks the button to accept the cookies.
+     *
+     * @param driver The WebDriver instance for navigating and extracting data from the web.
+     */
     private static void acceptCookiesIfPresent(WebDriver driver) {
         try {
             // Find the "Accept all" button using its class and aria-label attributes

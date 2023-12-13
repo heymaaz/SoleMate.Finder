@@ -1,12 +1,27 @@
 package org.example.scrapers;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
-
+/**
+ * The unisportstore2 class is responsible for scraping sku from the product page.
+ * It utilizes Selenium WebDriver for web navigation and data extraction.
+ * It is called by the UniSportStore class.
+ * It saves the sku in a String and returns it.
+ */
 public class unisportstore2 {
+    /**
+     * Runs the scraper for the UniSportStore website.
+     * This method orchestrates the process of scraping sku from UniSportStore,
+     * and stores them in a String.
+     * It calls the acceptCookiesIfPresent method to accept the cookies on the website.
+     * It then extracts the sku.
+     * It saves the sku in a String and returns it.
+     *
+     * @param driver The WebDriver instance for navigating and extracting data from the web.
+     * @param productUrl The URL of the product page.
+     * @return sku_full The sku of the product.
+     */
     public static String getSKUForProduct(WebDriver driver, String productUrl) {
         String sku_full="";
         try {
@@ -49,7 +64,13 @@ public class unisportstore2 {
         }
         return sku_full;
     }
-
+    /**
+     * Accepts the cookies on the UniSportStore website.
+     * This method finds the "Accept all" button on the cookie consent banner and clicks it.
+     * It prints a message to the console to indicate whether the button was found and clicked.
+     *
+     * @param driver The WebDriver instance for navigating and extracting data from the web.
+     */
     private static void acceptCookiesIfPresent(WebDriver driver) {
         try {
             // Find the "Accept all" button using its class and aria-label attributes
@@ -65,6 +86,14 @@ public class unisportstore2 {
             System.out.println("Cookie consent banner not present.");
         }
     }
+    /**
+     * Clicks the Specifications tab on the UniSportStore website.
+     * This method finds Specifications the tab using its title and clicks it.
+     * It prints a message to the console to indicate whether the tab was found and clicked.
+     *
+     * @param driver The WebDriver instance for navigating and extracting data from the web.
+     * @param tabTitle The title of the tab to click. This is case-sensitive. Must match the title exactly. "Specifications"
+     */
     private static void clickTab(WebDriver driver, String tabTitle) {
         try {
             // Find the tab with the specified title

@@ -2,12 +2,24 @@ package org.example.scrapers;
 
 import org.example.DatabaseUtility;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 
+/**
+ * The ultraFootball class is responsible for scraping product data from the ultraFootball website.
+ * It utilizes Selenium WebDriver for web navigation and data extraction, and integrates with
+ * the DatabaseUtility class for data persistence.
+ */
 public class ultraFootball {
+    /**
+     * Runs the scraper for the ultraFootball website.
+     * This method orchestrates the process of scraping product data from ultraFootball,
+     * including fetching product URLs, SKU details, and storing them in the database.
+     *
+     * @param dbUtil The DatabaseUtility instance for interacting with the database.
+     * @param driver The WebDriver instance for navigating and extracting data from the web.
+     * @param js The JavascriptExecutor for executing JavaScript commands during scraping.
+     */
     public static void runScraper(DatabaseUtility dbUtil, WebDriver driver, JavascriptExecutor js){
         try {
             // Navigate to the website
@@ -63,15 +75,8 @@ public class ultraFootball {
                     //Skip to next item System.out.println("An element was not found for one of the items.");
                 }
             }
-
-
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

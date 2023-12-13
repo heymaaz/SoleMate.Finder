@@ -6,8 +6,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
-
+/**
+ * This class provides functionality to scrape product data from the FootStore website.
+ * It navigates through the product pages, extracts product details, and stores them in the database.
+ */
 public class FootStore {
+    /**
+     * Runs the scraper for the FootStore website.
+     * This method navigates the FootStore website, extracts product details such as title, URL, and price,
+     * and stores this information in the database using the provided DatabaseUtility.
+     *
+     * @param dbUtil The database utility to be used for storing product data.
+     * @param driver The WebDriver instance used for web navigation and element extraction.
+     * @param js The JavascriptExecutor for executing JavaScript commands.
+     */
     public static void runScraper(DatabaseUtility dbUtil, WebDriver driver, JavascriptExecutor js) {
         try {
             // Navigate to the website
@@ -73,6 +85,13 @@ public class FootStore {
             e.printStackTrace();
         }
     }
+    /**
+     * Clicks the next button on the product listing page.
+     * This method attempts to find and click the "Next" button to navigate to the next page of products.
+     *
+     * @param driver The WebDriver instance used for finding and interacting with the Next button.
+     * @return true if the Next button was found and clicked, false otherwise.
+     */
     private static boolean clickNextButton(WebDriver driver) {
         try {
             WebElement nextButton = driver.findElement(By.cssSelector(".toolbar-bottom .pages li.next a"));
@@ -85,6 +104,12 @@ public class FootStore {
         }
         return false;
     }
+    /**
+     * Accepts any pop-up messages or overlays present on the page.
+     * This method is specifically used to handle pop-ups like cookie notices or promotional overlays.
+     *
+     * @param driver The WebDriver instance used for finding and interacting with pop-up elements.
+     */
     private static void acceptAllButton(WebDriver driver) {
         try {
             WebElement continueWithoutAcceptingButton = driver.findElement(By.xpath("//span[contains(text(),'Continue without accepting')]"));

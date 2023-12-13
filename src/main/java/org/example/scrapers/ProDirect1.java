@@ -8,8 +8,25 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * This class scrapes the ProDirect website
+ * It utilizes Selenium WebDriver for web navigation and data extraction.
+ * It saves the product data in a List of ProductInfo objects and returns it.
+ */
 public class ProDirect1 {
+    /**
+     * Runs the scraper for the ProDirect website.
+     * This method orchestrates the process of scraping product data from ProDirect,
+     * and stores them in a List of ProductInfo objects.
+     * It calls the ClickViewMoreButton method to click the "View More" button on the website
+     * to load all the products on the page.
+     * It then iterates through the products and extracts the title, URL, price, and image URL.
+     * It saves the product data in a List of ProductInfo objects and returns it.
+     *
+     * @param driver The WebDriver instance for navigating and extracting data from the web.
+     * @param js The JavascriptExecutor for executing JavaScript commands during scraping.
+     * @return products The List of ProductInfo objects containing the scraped data.
+     */
     public static List<ProductInfo> runScraper(WebDriver driver, JavascriptExecutor js) {
         List<ProductInfo> products = new ArrayList<>();
         try {
@@ -75,6 +92,14 @@ public class ProDirect1 {
         }
         return products;
     }
+    /**
+     * This method clicks the "View More" button on the ProDirect website
+     * to load all the products on the page.
+     * It uses a while loop to keep clicking the button until it is no longer present.
+     *
+     * @param driver The WebDriver instance for navigating and extracting data from the web.
+     * @param js The JavascriptExecutor for executing JavaScript commands during scraping.
+     */
     public static void ClickViewMoreButton(WebDriver driver,JavascriptExecutor js) {
         while (true) {
             // Loop until the button is no longer present
