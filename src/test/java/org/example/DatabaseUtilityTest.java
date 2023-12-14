@@ -1,7 +1,6 @@
 package org.example;
 
 import static org.mockito.Mockito.*;
-
 import org.example.entities.Comparison;
 import org.example.entities.ShoeModel;
 import org.example.entities.Shoes;
