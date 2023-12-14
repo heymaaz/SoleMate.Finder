@@ -21,6 +21,12 @@ public class DatabaseUtility {
             .addAnnotatedClass(Comparison.class)
             .buildSessionFactory();
 
+    public DatabaseUtility() {
+    }
+    public DatabaseUtility(SessionFactory mockedSessionFactory) {
+        this.sessionFactory = mockedSessionFactory;
+    }
+
     /**
      * This method is used to check whether the skuFull exists in the database
      * @param skuFull sku_full of the shoe
