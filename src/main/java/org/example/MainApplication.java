@@ -63,13 +63,17 @@ public class MainApplication {
      */
     public static void runScraper(int scraperChoice){
         // Setting the path of the ChromeDriver
-        System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+        System.out.println("Setting the path of the ChromeDriver");
+        System.setProperty("webdriver.chrome.driver", "/Users/maazchowdhry/Downloads/chromedriver/mac_arm-119.0.6045.105/chromedriver-mac-arm64/chromedriver");
         System.setProperty("webdriver.chrome.whitelistedIps", "");
         // Create an instance of ChromeOptions
+        System.out.println("Create an instance of ChromeOptions");
         ChromeOptions options = new ChromeOptions();
         // Set the path of the Chrome for testing
-        options.setBinary("C:\\Program Files\\Google\\chrome-win64\\chrome.exe");
+        System.out.println("Set the path of the Chrome for testing");
+        options.setBinary("/Applications/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing");
         //initialising webdriver and javascript executor
+        System.out.println("initialising webdriver and javascript executor");
         WebDriver driver = new ChromeDriver(options);
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
